@@ -1,0 +1,24 @@
+name: Deploy Bio3.0 to GitHub Pages
+
+on:
+  push:
+    branches: [ main, gh-pages ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Build & Deploy
+        uses: actions/deploy-pages@v4
